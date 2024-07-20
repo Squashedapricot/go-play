@@ -1,9 +1,10 @@
 package main
 
-import "fmt"
+import "strings"
 
-func greeUsers() {
-	fmt.Printf("Welcome to the %v bookings app\n", conferanceName)
-	fmt.Printf("We have only tickets %v and only remain %v Book you ticket don't miss your chance\n", conferanceTickets, remainingTickets)
-	fmt.Println("Book the tickets here")
+func validateUserInput(firstName string, lastName string, email string, userTicket uint, remainingTickets uint) (bool, bool, bool) {
+	var isValidName = len(firstName) >= 2 && len(lastName) >= 2
+	var isValidEmail = strings.Contains(email, "@")
+	var isValidTicketNumber = userTicket > 0 && userTicket <= remainingTickets
+	return isValidName, isValidEmail, isValidTicketNumber
 }
